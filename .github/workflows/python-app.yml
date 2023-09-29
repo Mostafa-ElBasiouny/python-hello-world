@@ -6,7 +6,7 @@ name: Python application
 on:
   push:
     branches: [ "main" ]
-    path:
+    paths:
     - 'hello_world.py'
     - 'lint.py'
 
@@ -26,3 +26,6 @@ jobs:
         pip install pylint
     - name: Lint with pylint
       run: python lint.py
+    - uses: pre-commit/action@v3.0.0
+    - uses: pre-commit-ci/lite-action@v1.0.1
+      if: always()
